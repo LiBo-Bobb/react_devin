@@ -1,0 +1,5 @@
+export const btn_bg_png = require('./btn_bg.png')
+export const shuangyinhao_png = require('./shuangyinhao.png')
+export const extra_point_png = require('./extra_point.png')
+export const bg2_png = require('./bg2.png')
+export const bg_png = require('./bg.png')

@@ -1,16 +1,21 @@
-import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
+import React, {PureComponent} from 'react';
 import './app.scss'
+// import ScrollWrap from './common/components/ScrollWrap'
+// import {widthScrollWrap} from './common/components/ScrollWrap'/
 
-function App() {
-  return (
-    <div className="App">
-      <div className="test">1231231
-         <div className="test2">1231231</div>
-      </div>
-    </div>
-  );
+// @widthScrollWrap()
+class App extends PureComponent {
+    constructor(props) {
+        super();
+        // console.log("props...",props)
+    }
+    render() {
+        return <div className="App">
+            <div className="test">1231231
+                <div className="test2">1231231</div>
+            </div>
+        </div>
+    }
 }
 
 export default App;

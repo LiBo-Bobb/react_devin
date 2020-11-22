@@ -1,0 +1,23 @@
+// 文字换行控制
+%nowrap {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+// 背景图片
+%background-img {
+  background-color: #f4f4f6;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+// 点击效果
+%clicked {
+  &:active {
+    box-shadow: 0 0 11px 0px rgba(130, 130, 130, 0.5);
+  }
+}
+
+$activeColor: #7f1f59;

@@ -1,0 +1,8 @@
+export const right_black_png = require('./right_black.png')
+export const laba_png = require('./laba.png')
+export const silver_card_png = require('./silver_card.png')
+export const background_dianzui_png = require('./background_dianzui.png')
+export const right_yellow_png = require('./right_yellow.png')
+export const gold_card_png = require('./gold_card.png')
+export const bg_png = require('./bg.png')
+export const bg2_png = require('./bg2.png')
