@@ -28,7 +28,7 @@ class App extends PureComponent {
     constructor(props) {
         super()
 
-        console.log("proops...",props)
+        // console.log("proops...",props)
     }
 
 

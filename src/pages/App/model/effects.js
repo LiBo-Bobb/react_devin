@@ -6,7 +6,7 @@ import * as api from '../../../common/services'
 
 import * as globalAction from "./actions";
 
-import {selectAppInit, selectPreLoad} from "./reducers";
+import {selectAppInit,} from "./reducers";
 
 // 获取token
 import {getToken, getFingerPrint} from "../../../common/utils/token";
@@ -133,31 +133,24 @@ function* watchPutModalMessage() {
 // }
 
 
-
-
 /* ******** global methods ******** */
 
 // 登陆
 export function* needLogin(force, callback) {
-    // 获取服务端数据
-    const preload = yield select(selectPreLoad)
     // 获取指纹
-    const fp = preload.fp || getFingerPrint()
-
+    const fp = getFingerPrint()
     if (force) {
         yield put(globalAction.login(fp))
         return
     }
-
     // 获取token
-    const token = preload.token || getToken('sk')
+    const token = getToken('sk')
 
     if (token) {
         yield put(globalAction.loginSuccess(token, fp))
     } else {
         // 需要登陆 登陆前可执行某些逻辑
         if (callback) yield call(callback)
-
         // 跳转登陆
         yield put(globalAction.login(fp))
     }
@@ -172,7 +165,15 @@ export function delay(time) {
     })
 }
 
-// 封装checkRes方法 对华住活动后端的响应数据进行处理
+/**
+ *封装checkRes方法 对后端的响应数据进行处理
+ * @param api      调用接口的函数
+ * @param data     接口参数
+ * @param success  成功函数
+ * @param failed   失败函数
+ * @param loading  是否loading
+ * @returns {Generator<CallEffect|PutEffect<{force: *, type: string}>|PutEffect<{type: string}>|PutEffect<{msg: *, res: *, type: string}>|*|PutEffect<{msg: *, type: string}>, void, *>}
+ */
 export function* checkRes({api, data, success, failed, loading}) {
     // 统一loading处理
     if (loading) {

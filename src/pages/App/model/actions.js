@@ -36,13 +36,7 @@ export function initAppDone() {
     }
 }
 
-// 储存服务端预设数据
-export function savePreload(preload) {
-    return {
-        type: SAVE_PRELOAD,
-        preload
-    }
-}
+
 
 // 登陆
 export function login(fingerPrint) {
