@@ -23,7 +23,6 @@ export const RouteList = ({routes, base = ''}) => {
         let {component, exact, routes: subRoutes} = routes[routePath]
 
         routeTree[routePath] = 'component'
-
         let path = base + routePath
 
         if (!component && subRoutes) {

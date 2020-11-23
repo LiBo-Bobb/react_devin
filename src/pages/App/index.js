@@ -33,8 +33,8 @@ class App extends PureComponent {
     // 底部tabbar
     renderNavbar() {
         const {location: {pathname}, history} = this.props
-        console.log("proops...",this.props)
-        console.log("pathname....",pathname)
+        // console.log("proops...",this.props)
+        // console.log("pathname....",pathname)
         const needNavbarList = ['/', '/member',]
         let showNavBar = needNavbarList.indexOf(pathname) !== -1
         return (

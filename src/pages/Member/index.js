@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 // import Swiper from 'react-id-swiper'
 import {Helmet} from "react-helmet";
 import './index.scss';
-import {Link} from '../../common/router'
+// import {Link} from '../../common/router'
 
 import lazyRedux from '../../common/redux/lazyRedux'
 import saga from './model/effects'
@@ -39,6 +39,9 @@ class Member extends PureComponent {
     }
     render() {
         return <div className="homePage">
+            <Helmet>
+                <title>会员中心</title>
+            </Helmet>
             <div className="content">
                 this is memberPage!
             </div>

@@ -99,6 +99,7 @@ module.exports = function (webpackEnv) {
     // common function to get style loaders
     // 用于获取样式加载器的常用函数
     const getStyleLoaders = (cssOptions, preProcessor) => {
+        let { design } = require('./config')
         const loaders = [
             isEnvDevelopment && require.resolve('style-loader'),
             isEnvProduction && {
@@ -141,10 +142,10 @@ module.exports = function (webpackEnv) {
                         }),
                         // 移动端适配
                         require('postcss-plugin-pxtoviewport')({
-                            viewportWidth: 375,
-                            rootValue: 16,
-                            toRem: true,
-                            toViewport: true,
+                            viewportWidth: design.viewportWidth,
+                            rootValue: design.rootValue,
+                            toRem: design.toRem,
+                            toViewport: design.toViewport,
                             selectorBlackList: ['.swiper-container'],
                         }),
                         // Adds PostCSS Normalize as the reset css with default options,

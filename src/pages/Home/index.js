@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 // import Swiper from 'react-id-swiper'
 import {Helmet} from "react-helmet";
 import './index.scss';
-import {Link} from '../../common/router'
+// import {Link} from '../../common/router'
 
 import lazyRedux from '../../common/redux/lazyRedux'
 import saga from './model/effects'
@@ -41,6 +41,9 @@ class Home extends PureComponent {
 
     render() {
         return <div className="page page-home">
+            <Helmet>
+                <title>酒店</title>
+            </Helmet>
             <div className="homePage">
                 Hello,this is HomePage!
             </div>
