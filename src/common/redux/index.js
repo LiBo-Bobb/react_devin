@@ -52,7 +52,6 @@ function enhancerStore(store) {
 
         // 避免 多次替换。
         if (!replace) return
-
         let newReducer = combineReducers({
             ...syncReducers,
             ...store.asyncReducers

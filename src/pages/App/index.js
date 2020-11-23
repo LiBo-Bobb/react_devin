@@ -27,15 +27,15 @@ const mapDispatch = {
 class App extends PureComponent {
     constructor(props) {
         super()
-
         // console.log("proops...",props)
     }
-
 
     // 底部tabbar
     renderNavbar() {
         const {location: {pathname}, history} = this.props
-        const needNavbarList = ['/', '/record', '/task', '/task/taskHistory']
+        console.log("proops...",this.props)
+        console.log("pathname....",pathname)
+        const needNavbarList = ['/', '/member',]
         let showNavBar = needNavbarList.indexOf(pathname) !== -1
         return (
             <div className={'navbar' + (showNavBar ? ' show' : '')}>
@@ -50,20 +50,20 @@ class App extends PureComponent {
                     酒店
                 </div>
                 <div className="line"/>
-                <div className={'item totask' + ((pathname.split('/')[1] === 'task') ? ' active' : '')}
+                <div className={'item totask' + ((pathname.split('/')[1] === 'member') ? ' active' : '')}
                      onClick={() => {
-                         if ((pathname.split('/')[1] !== 'task')) {
-                             history.replace('/task')
+                         if ((pathname.split('/')[1] !== 'member')) {
+                             history.replace('/member')
                          }
                      }}
                 >
                     会员
                 </div>
                 <div className="line"/>
-                <div className={'item tolog' + (pathname === '/record' ? ' active' : '')}
+                <div className={'item tolog' + (pathname === '/' ? ' active' : '')}
                      onClick={() => {
-                         if (pathname !== '/record') {
-                             history.replace('/record')
+                         if (pathname !== '/') {
+                             history.replace('/')
                          }
                      }}
                 >

@@ -1,8 +1,8 @@
 import {store} from "../redux";
 import axios from 'axios'
 import {api} from './env.config'
-import {isHuaZhuApp, isMiniProgramPromise, isMiniProgramSync, isWeixin} from "../utils/env";
-import {navigateToMiniProgramWebview} from "../utils/navigateToMiniProgram";
+// import {isHuaZhuApp, isMiniProgramPromise, isMiniProgramSync, isWeixin} from "../utils/env";
+// import {navigateToMiniProgramWebview} from "../utils/navigateToMiniProgram";
 
 export const server = api
 export const ajax = axios.create()

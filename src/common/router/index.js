@@ -14,7 +14,7 @@ import {routes} from './routes'
 
 let history, routeTree = {}
 
-//DOC　todo 路由书调整
+//TODO: DOC　 路由书调整
 window.routeTree = routeTree
 
 export const RouteList = ({routes, base = ''}) => {
@@ -81,8 +81,10 @@ const Router = (props) => {
 function enhancerHistory(history) {
     const initPathname = history.location.pathname
     let list = history.list = [initPathname]
-
     history.listen((location, action) => {
+        // console.log("location...", location, "action....", action)
+        // console.log('location...',location)
+        // console.log('action...',action)
         let {pathname} = location
         let {length} = list
         // 路由相同 返回
