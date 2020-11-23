@@ -12,4 +12,5 @@ const Root = (
         </Router>
     </Redux>
 )
+
 render(Root, document.getElementById('root'))
