@@ -40,8 +40,10 @@ class Home extends PureComponent {
 
 
     render() {
-        return <div className="homePage">
-            Hello,this is HomePage!
+        return <div className="page page-home">
+            <div className="homePage">
+                Hello,this is HomePage!
+            </div>
             <div className="content">
                 homeContent
             </div>
