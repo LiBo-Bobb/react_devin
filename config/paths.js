@@ -3,9 +3,9 @@
 const path = require('path');
 const fs = require('fs');
 const getPublicUrlOrPath = require('react-dev-utils/getPublicUrlOrPath');
-
-// Make sure any symlinks in the project folder are resolved:
-// https://github.com/facebook/create-react-app/issues/637
+const envPublicUrl = process.env.PUBLIC_URL;
+//确保项目文件夹中的符号链接被解析:
+// /Users/libo/Desktop/react_devin
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
@@ -15,40 +15,43 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 // single-page apps that may serve index.html for nested URLs like /todos/42.
 // We can't use a relative path in HTML because we don't want to load something
 // like /todos/42/static/js/bundle.7289d.js. We have to know the root.
-const publicUrlOrPath = getPublicUrlOrPath(
-  process.env.NODE_ENV === 'development',
-  require(resolveApp('package.json')).homepage,
-  process.env.PUBLIC_URL
-);
-// console.log("homepage....",resolveApp('package.json'))
 
-// console.log("publicUrlOrPath...",publicUrlOrPath)
+const getPublicUrl = () => {
+    return envPublicUrl || require('./config').cdn;
+}
+
+const publicUrlOrPath = getPublicUrlOrPath(
+    process.env.NODE_ENV === 'development',
+    require(resolveApp('package.json')).homepage,
+    process.env.PUBLIC_URL
+);
+
 const moduleFileExtensions = [
-  'web.mjs',
-  'mjs',
-  'web.js',
-  'js',
-  'web.ts',
-  'ts',
-  'web.tsx',
-  'tsx',
-  'json',
-  'web.jsx',
-  'jsx',
+    'web.mjs',
+    'mjs',
+    'web.js',
+    'js',
+    'web.ts',
+    'ts',
+    'web.tsx',
+    'tsx',
+    'json',
+    'web.jsx',
+    'jsx',
 ];
 
 // Resolve file paths in the same order as webpack
 //按照与webpack相同的顺序解析文件路径
 const resolveModule = (resolveFn, filePath) => {
-  const extension = moduleFileExtensions.find(extension =>
-    fs.existsSync(resolveFn(`${filePath}.${extension}`))
-  );
+    const extension = moduleFileExtensions.find(extension =>
+        fs.existsSync(resolveFn(`${filePath}.${extension}`))
+    );
 
-  if (extension) {
-    return resolveFn(`${filePath}.${extension}`);
-  }
+    if (extension) {
+        return resolveFn(`${filePath}.${extension}`);
+    }
 
-  return resolveFn(`${filePath}.js`);
+    return resolveFn(`${filePath}.js`);
 };
 
 // {
@@ -72,27 +75,24 @@ const resolveModule = (resolveFn, filePath) => {
 
 // config after eject: we're in ./config/
 const pathObj = {
-  dotenv: resolveApp('.env'),
-  appPath: resolveApp('.'),//"Users/libo/Desktop/my-app",
-  appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveModule(resolveApp, 'src/index'),
-  appPackageJson: resolveApp('package.json'),
-  appSrc: resolveApp('src'),
-  appTsConfig: resolveApp('tsconfig.json'),
-  appJsConfig: resolveApp('jsconfig.json'),
-  yarnLockFile: resolveApp('yarn.lock'),
-  testsSetup: resolveModule(resolveApp, 'src/setupTests'),
-  proxySetup: resolveApp('src/setupProxy.js'),
-  appNodeModules: resolveApp('node_modules'),
-  swSrc: resolveModule(resolveApp, 'src/service-worker'),
-  publicUrlOrPath,
+    dotenv: resolveApp('.env'),
+    appPath: resolveApp('.'),
+    appBuild: resolveApp('build'),
+    appPublic: resolveApp('public'),
+    appHtml: resolveApp('public/index.html'),
+    appIndexJs: resolveModule(resolveApp, 'src/index'),
+    appPackageJson: resolveApp('package.json'),
+    appSrc: resolveApp('src'),
+    appTsConfig: resolveApp('tsconfig.json'),
+    appJsConfig: resolveApp('jsconfig.json'),
+    yarnLockFile: resolveApp('yarn.lock'),
+    testsSetup: resolveModule(resolveApp, 'src/setupTests'),
+    proxySetup: resolveApp('src/setupProxy.js'),
+    appNodeModules: resolveApp('node_modules'),
+    swSrc: resolveModule(resolveApp, 'src/service-worker'),
+    publicUrlOrPath,
 };
-
-// console.log("pathObj...",pathObj)
 module.exports = pathObj;
-
 
 
 module.exports.moduleFileExtensions = moduleFileExtensions;

@@ -1,5 +1,0 @@
-export const share_success_png = require('./share_success.png')
-export const huazhu_icon_jpg = require('./huazhu_icon.jpg')
-export const yes_png = require('./yes.png')
-export const anxinzhu_png = require('./anxinzhu.png')
-export const close_png = require('./close.png')

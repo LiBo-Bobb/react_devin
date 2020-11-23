@@ -63,7 +63,6 @@ export default class ScrollWrap extends PureComponent {
         const {scrollWrapRef: {current: scrollEl}} = this
         const {scrollTop: st, scrollHeight: sh, offsetHeight: oh} = scrollEl
         let isShowToTop = showToTop
-
         if (st > showToTopHeight && !showToTop) {
             isShowToTop = true
         }

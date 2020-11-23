@@ -99,7 +99,7 @@ module.exports = function (webpackEnv) {
     // common function to get style loaders
     // 用于获取样式加载器的常用函数
     const getStyleLoaders = (cssOptions, preProcessor) => {
-        let { design } = require('./config')
+        let {design} = require('./config')
         const loaders = [
             isEnvDevelopment && require.resolve('style-loader'),
             isEnvProduction && {
