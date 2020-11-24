@@ -1,6 +1,6 @@
 const path = require('path');
 // 获取年
-const getYear = () => new Date().getFullYear()
+// const getYear = () => new Date().getFullYear()
 
 // 获取当前路径
 const getDir = () => {
@@ -18,7 +18,6 @@ const getDir = () => {
 const config = {
     name: `${getDir()}`,
     cdn: './',
-    // CSS 单位模式 viewport or rem
     // CSS 单位模式 viewport or rem
     cssMode: 'viewport',
     design: {

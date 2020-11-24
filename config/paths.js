@@ -43,17 +43,23 @@ const moduleFileExtensions = [
     'jsx',
 ];
 
-// Resolve file paths in the same order as webpack
-//按照与webpack相同的顺序解析文件路径
+/**
+ * Resolve file paths in the same order as webpack
+ * 按照与webpack相同的顺序解析文件路径
+ * @param resolveFn  resolveApp
+ * @param filePath   传入的文件路径
+ * @returns {*}      返回完整的路径
+ */
 const resolveModule = (resolveFn, filePath) => {
-    const extension = moduleFileExtensions.find(extension =>
-        fs.existsSync(resolveFn(`${filePath}.${extension}`))
+    const extension = moduleFileExtensions.find(extension => {
+            // true or false
+            return fs.existsSync(resolveFn(`${filePath}.${extension}`))
+        }
     );
-
     if (extension) {
         return resolveFn(`${filePath}.${extension}`);
     }
-
+    //'/Users/libo/Desktop/my-app/src/index.js'
     return resolveFn(`${filePath}.js`);
 };
 
