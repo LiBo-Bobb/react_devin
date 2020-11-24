@@ -14,7 +14,6 @@ const getDir = () => {
     return arr[0]
 }
 
-
 const config = {
     name: `${getDir()}`,
     cdn: './',

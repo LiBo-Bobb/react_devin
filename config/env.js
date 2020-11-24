@@ -4,7 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const paths = require('./paths');
 
-// Make sure that including paths.js after env.js will read .env variables.
+//path.isAbsolute()  方法检测path是否为绝对路径
+
 // 确保在env.js之后包含path .js会读取.env变量。
 // /Users/libo/Desktop/my-app/config/paths.js
 delete require.cache[require.resolve('./paths')];
@@ -55,6 +56,7 @@ process.env.NODE_PATH = (process.env.NODE_PATH || '')
   .split(path.delimiter)
   .filter(folder => folder && !path.isAbsolute(folder))
   .map(folder => path.resolve(appDirectory, folder))
+    //系统分隔符
   .join(path.delimiter);
 
 // Grab NODE_ENV and REACT_APP_* environment variables and prepare them to be

@@ -8,8 +8,8 @@ const config = require('./config');
 
 //确保项目文件夹中的符号链接被解析:
 // /Users/libo/Desktop/react_devin
+//返回绝对路径（fs.realpathSync）
 const appDirectory = fs.realpathSync(process.cwd());
-// console.log("appDirectory...", appDirectory)
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 // We use `PUBLIC_URL` environment variable or "homepage" field to infer

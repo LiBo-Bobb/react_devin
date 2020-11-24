@@ -162,5 +162,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0"
   }
 }

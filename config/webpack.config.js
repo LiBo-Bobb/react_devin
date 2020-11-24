@@ -28,6 +28,8 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const postcssNormalize = require('postcss-normalize');
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+
 
 const appPackageJson = require(paths.appPackageJson);
 
@@ -605,6 +607,8 @@ module.exports = function (webpackEnv) {
                         : undefined
                 )
             ),
+            //打包之前，删除原来的包，然后再重新打包
+            // new CleanWebpackPlugin(),
             // Inlines the webpack runtime script. This script is too small to warrant
             // a network request.
             // https://github.com/facebook/create-react-app/issues/5358

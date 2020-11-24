@@ -10,15 +10,14 @@ process.env.NODE_ENV = 'development';
 process.on('unhandledRejection', err => {
   throw err;
 });
-
 // Ensure environment variables are read.
+//确保读取了环境变量。
 require('../config/env');
-
-
 const fs = require('fs');
 const chalk = require('react-dev-utils/chalk');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
+ //清空控制台信息
 const clearConsole = require('react-dev-utils/clearConsole');
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 const {
@@ -27,6 +26,7 @@ const {
   prepareProxy,
   prepareUrls,
 } = require('react-dev-utils/WebpackDevServerUtils');
+//在控制台打开网址
 const openBrowser = require('react-dev-utils/openBrowser');
 const semver = require('semver');
 const paths = require('../config/paths');
@@ -40,6 +40,7 @@ const useYarn = fs.existsSync(paths.yarnLockFile);
 const isInteractive = process.stdout.isTTY;
 
 // Warn and crash if required files are missing
+//警告和崩溃，如果需要的文件丢失
 if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1);
 }
@@ -79,7 +80,6 @@ checkBrowsers(paths.appPath, isInteractive)
       // We have not found a port.
       return;
     }
-
     const config = configFactory('development');
     const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
     const appName = require(paths.appPackageJson).name;
