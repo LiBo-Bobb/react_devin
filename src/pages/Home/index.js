@@ -38,7 +38,6 @@ class Home extends PureComponent {
         this.state = {}
     }
 
-
     render() {
         return <div className="page page-home">
             <Helmet>
