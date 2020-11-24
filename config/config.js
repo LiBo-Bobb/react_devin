@@ -1,11 +1,26 @@
-/*
-*   该文件将项目中的一些配置选项集中管理 待慢慢完善
-* */
+const path = require('path');
+// 获取年
+const getYear = () => new Date().getFullYear()
 
-module.exports = {
-    name: 'NORTH',
+// 获取当前路径
+const getDir = () => {
+    let url = path.join(__dirname, '../')
+    let arr = []
+    if (url.indexOf('/') > -1) {
+        url.split('/').forEach(item => item && arr.unshift(item))
+    } else {
+        url.split(':')[1].split('\\').forEach(item => item && arr.unshift(item))
+    }
+    return arr[0]
+}
+
+
+const config = {
+    name: `${getDir()}`,
     cdn: './',
     // CSS 单位模式 viewport or rem
+    // CSS 单位模式 viewport or rem
+    cssMode: 'viewport',
     design: {
         // 用于 viewport
         viewportWidth: 375,
@@ -14,3 +29,5 @@ module.exports = {
         toViewport: true
     }
 }
+
+module.exports = config;

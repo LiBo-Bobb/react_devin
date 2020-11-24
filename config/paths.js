@@ -4,9 +4,12 @@ const path = require('path');
 const fs = require('fs');
 const getPublicUrlOrPath = require('react-dev-utils/getPublicUrlOrPath');
 const envPublicUrl = process.env.PUBLIC_URL;
+const config = require('./config');
+
 //确保项目文件夹中的符号链接被解析:
 // /Users/libo/Desktop/react_devin
 const appDirectory = fs.realpathSync(process.cwd());
+// console.log("appDirectory...", appDirectory)
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 // We use `PUBLIC_URL` environment variable or "homepage" field to infer
@@ -73,13 +76,16 @@ const resolveModule = (resolveFn, filePath) => {
 //   publicUrlOrPath: '/'
 // }
 
-// config after eject: we're in ./config/
 const pathObj = {
     dotenv: resolveApp('.env'),
     appPath: resolveApp('.'),
-    appBuild: resolveApp('build'),
-    appPublic: resolveApp('public'),
-    appHtml: resolveApp('public/index.html'),
+    // 打包输出包 地址
+    appBuild: resolveApp(`dist/${config.name}-${process.env.REACT_APP_ENV}`),
+    // 静态文件public 文件夹 物理路径
+    appPublic: resolveApp('src/assets/public'),
+    // 全局html模板 物理地址
+    appHtml: resolveApp('src/assets/public/index.html'),
+    // 项目入口地址
     appIndexJs: resolveModule(resolveApp, 'src/index'),
     appPackageJson: resolveApp('package.json'),
     appSrc: resolveApp('src'),

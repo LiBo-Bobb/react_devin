@@ -50,10 +50,8 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 }
 
 const argv = process.argv.slice(2);
-// console.log("argv...",argv)
 const writeStatsJson = argv.indexOf('--stats') !== -1;
 
-// Generate configuration   {}
 const config = configFactory('production');
 
 

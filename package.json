@@ -84,7 +84,7 @@
     "workbox-webpack-plugin": "5.1.4"
   },
   "scripts": {
-    "build": "cross-env REACT_APP_ENV=test node scripts/build.js",
+    "build": "cross-env REACT_APP_ENV=production node scripts/build.js",
     "start": "cross-env REACT_APP_ENV=test node scripts/start.js",
     "release": "cross-env REACT_APP_ENV=production node scripts/start.js"
   },
