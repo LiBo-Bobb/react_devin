@@ -179,10 +179,9 @@ export function* checkRes({api, data, success, failed, loading}) {
     if (loading) {
         yield put(globalAction.showLoading())
     }
-
     const res = yield call(api, data)
-    const code = parseInt(res.code, 10)
-    if (code === 200) {
+    const code = res.code
+    if (code === "1") {
         // 服务端响应成功
         yield success(res.data)
     } else if (code === 400) {

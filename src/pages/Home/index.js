@@ -1,14 +1,11 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux'
-// import Swiper from 'react-id-swiper'
 import {Helmet} from "react-helmet";
 import './index.scss';
-// import {Link} from '../../common/router'
-
 import lazyRedux from '../../common/redux/lazyRedux'
 import saga from './model/effects'
 import reducer from './model/reducers'
-import {routeHome} from './model/actions'
+import {routeHome, getHotelList} from './model/actions'
 import {showModal} from '../App/model/actions'
 
 
@@ -18,7 +15,8 @@ const mapState = (state) => ({
 
 const mapDispatch = {
     routeHome,
-    showModal
+    showModal,
+    getHotelList,
 }
 
 const mapDependence = {
@@ -38,6 +36,12 @@ class Home extends PureComponent {
         this.state = {}
     }
 
+    //
+    getHotelList = () => {
+        const {getHotelList} = this.props;
+        getHotelList()
+    }
+
     render() {
         return <div className="page page-home">
             <Helmet>
@@ -45,6 +49,7 @@ class Home extends PureComponent {
             </Helmet>
             <div className="homePage">
                 Hello,this is HomePage!
+                <button onClick={this.getHotelList}>获取酒店列表</button>
             </div>
             <div className="content">
                 homeContent

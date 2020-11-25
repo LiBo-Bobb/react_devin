@@ -42,23 +42,58 @@ function* initHome() {
 
 // 每次加载
 function* loadHome() {
-    // yield call(getRecommend)
+    // yield call(getRecommendHotelList)
 }
+
+/* ******* 业务接口 ******* */
+
+// 获取酒店推荐列表
+function* getRecommendHotelList() {
+    yield call(checkRes, {
+        api: api.getRecommendHotelList,
+        success: (data) => {
+            console.log("data.....", data)
+            return all([put(action.receiveRecommendHotelList(data))])
+            // return put(action.receiveBanner(data))
+        },
+        failed: () => put(globalAction.putMessage('酒店列表获取失败~'))
+    })
+}
+
+// 获取酒店列表
+function* getHotelList() {
+    yield call(checkRes, {
+        api: api.getHotelList,
+        data: {
+            backendCategoryId: "1",
+            checkInDate: "2020-11-28",
+            checkOutDate: "2020-11-29",
+            pageNum: 1,
+            pageSize: 10,
+            shopName: "",
+            tagId: ""
+        },
+        success: (data) => {
+            console.log("hotelList.....", data)
+            return ""
+        }
+    })
+}
+
 
 /* ******* watcher ******* */
 function* watchRegister() {
     // 初始化监听
-    yield all([])
+    yield all([fork(watchGetHotelList),])
 }
 
 //
-// function* getBanner() {
-//     yield call(checkRes, {
-//         api: api.getBanner,
-//         success: (data) => put(action.receiveBanner(data)),
-//         failed: () => put(globalAction.putMessage('banner获取失败'))
-//     })
-// }
+function* watchGetHotelList() {
+    while (true) {
+        const {} = yield take(action.GET_HOTEL_LIST)
+        yield call(getHotelList)
+    }
+}
 
 export default function* homeSaga() {
     yield fork(main)
